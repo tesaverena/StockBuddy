@@ -49,6 +49,9 @@ function showMainMenu() {
                 <button onclick="showReturnItems()" class="menu-button">
                     <i class="fas fa-undo"></i>Return Items
                 </button>
+                <button onclick="showRemoveItems()" class="menu-button">
+                    <i class="fas fa-trash"></i>Remove Items
+                </button>
                 <button onclick="showInventoryHistory()" class="menu-button">
                     <i class="fas fa-history"></i>View History
                 </button>
@@ -57,8 +60,91 @@ function showMainMenu() {
         </div>
     `;
     document.getElementById('app').innerHTML = html;
-    addMenuButtonEffects();
 }
+
+// Add this new function
+function showRemoveItems() {
+    let html = `
+        <div class="screen">
+            <h2>Remove Items</h2>
+            <div class="inventory-grid">
+            ${Object.entries(inventoryData).map(([category, items]) => `
+                <div class="category-section">
+                    <h3>${category}</h3>
+                    ${Object.entries(items).map(([item, data]) => `
+                        <div class="item-card">
+                            <h4>${item}</h4>
+                            <p>Current Stock: ${data.quantity}</p>
+                            <button onclick="removeItem('${category}', '${item}')" class="remove-button">
+                                <i class="fas fa-trash"></i> Remove Item
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('')}
+            </div>
+            <button onclick="showMainMenu()" class="back-button">Back to Menu</button>
+        </div>
+    `;
+    document.getElementById('app').innerHTML = html;
+}
+
+function showRemoveItems() {
+    let html = `
+        <div class="screen">
+            <h2>Remove Items</h2>
+            <div class="inventory-list">
+            `;
+               
+    // Add each item
+    for (let item in inventoryData) {
+        html += `
+            <div class="item-row" id="${item}">
+                <span>${item}</span>
+                <button onclick="removeItemDirect('${item}')">Remove Item</button>
+            </div>
+        `;
+    }
+    
+    html += `
+            </div>
+            <button onclick="showMainMenu()" class="back-button">Back to Menu</button>
+        </div>
+    `;
+    document.getElementById('app').innerHTML = html;
+}
+
+function removeItemDirect(item) {
+    if (confirm('Are you sure?')) {
+        // Remove from screen
+        document.getElementById(item).remove();
+        
+        // Remove from data
+        delete inventoryData[item];
+        saveData();
+    }
+}
+
+
+    
+
+function removeItem(item) {
+    if (confirm(`Are you sure you want to remove ${item}?`)) {
+        delete inventoryData[item];
+        saveData();
+        
+        // Remove the item from display immediately
+        const itemElement = document.querySelector(`[onclick="removeItem('${item}')"]`).parentNode;
+        itemElement.style.animation = 'fadeOut 0.3s';
+        setTimeout(() => {
+            itemElement.remove();
+        }, 300);
+    }
+}
+
+
+
+
 
 function addMenuButtonEffects() {
     const buttons = document.querySelectorAll('.menu-button');
