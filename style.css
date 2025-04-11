@@ -1,0 +1,458 @@
+:root {
+    --aws-dark-blue: #232F3E;
+    --aws-orange: #FF9900;
+    --aws-blue: #146EB4;
+    --aws-white: #FFFFFF;
+    --aws-light-grey: #F2F3F3;
+    --aws-dark-orange: #E47911;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: var(--aws-dark-blue);
+    color: var(--aws-white);
+    min-height: 100vh;
+}
+
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.screen {
+    background-color: var(--aws-dark-blue);
+    border-radius: 12px;
+    padding: 30px;
+    min-height: 90vh;
+}
+
+/* Welcome Screen */
+#loginScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+h1 {
+    color: var(--aws-orange);
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+h2 {
+       color: var(--aws-white);
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: var(--aws-orange);
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+/* Input Fields */
+input {
+    background-color: var(--aws-white);
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 1.1em;
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 15px auto;
+}
+
+/* Buttons */
+button {
+    background-color: var(--aws-orange);
+    color: var(--aws-white);
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px auto;
+    width: calc(100% - 20px);
+    max-width: 400px;
+    display: block;
+}
+
+button:hover {
+    background-color: var(--aws-dark-orange);
+    transform: translateY(-2px);
+}
+
+/* Main Menu Grid */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Inventory Grid */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Item Cards */
+.item-card {
+    background-color: var(--aws-blue);
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+}
+
+.item-card h3 {
+    color: var(--aws-white);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.item-card p {
+    color: var(--aws-white);
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+/* Low Stock Styling */
+.low-stock {
+    border: 2px solid var(--aws-orange);
+}
+
+.low-stock-warning {
+    background-color: var(--aws-orange);
+    color: var(--aws-white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9em;
+}
+
+/* History Items */
+.history-item {
+    background-color: var(--aws-blue);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-size: 1.1em;
+}
+
+/* Transaction Controls */
+.transaction-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.transaction-controls input {
+    width: 100px;
+    margin: 0;
+}
+
+.transaction-controls button {
+    width: auto;
+    margin: 0;
+    padding: 10px 20px;
+}
+
+/* Back Button */
+.back-button {
+    background-color: var(--aws-blue);
+    margin-top: 20px;
+}
+
+/* Export Button */
+.export-button {
+    background-color: var(--aws-dark-orange);
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .inventory-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    h1 {
+        font-size: 2.5em;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--aws-dark-blue);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--aws-orange);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--aws-dark-orange);
+}
+
+/* Ensure other screens don't inherit login screen properties */
+.screen:not(#loginScreen) {
+    display: block;
+    height: auto;
+}
+/* AWS-inspired header */
+.aws-inspired-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-container {
+    display: inline-block;
+    padding: 10px;
+}
+
+.aws-style-icon {
+    position: relative;
+    width: 60px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.aws-bar {
+    position: absolute;
+    background-color: var(--aws-orange);
+    width: 8px;
+    border-radius: 4px;
+}
+
+.bar1 {
+    height: 40px;
+    left: 0;
+}
+
+.bar2 {
+    height: 30px;
+    left: 26px;
+    top: 5px;
+}
+
+.bar3 {
+    height: 20px;
+    right: 0;
+    top: 10px;
+}
+/* Box Buddy Mascot */
+.box-buddy {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.box-body {
+    width: 60px;
+    height: 50px;
+    background: var(--aws-orange);
+    border-radius: 8px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.box-lid {
+    width: 70px;
+    height: 15px;
+    background: var(--aws-dark-orange);
+    border-radius: 8px 8px 0 0;
+    position: absolute;
+    top: -10px;
+    left: -5px;
+}
+
+.box-face {
+    position: absolute;
+    top: 15px;
+    width: 100%;
+}
+
+.box-eye {
+    width: 8px;
+    height: 8px;
+    background: var(--aws-dark-blue);
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+}
+
+.box-eye.left { left: 15px; }
+.box-eye.right { right: 15px; }
+
+.box-smile {
+    width: 20px;
+    height: 10px;
+    border-bottom: 3px solid var(--aws-dark-blue);
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: -5px;
+    left: 20px;
+}
+/* Add animation to the box buddy */
+.box-body {
+    /* ... existing box-body styles ... */
+    animation: floating 3s ease-in-out infinite;
+}
+
+.box-lid {
+    /* ... existing box-lid styles ... */
+    animation: lid-wiggle 3s ease-in-out infinite;
+}
+
+.box-eye {
+    /* ... existing box-eye styles ... */
+    animation: blink 4s infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes lid-wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+}
+
+@keyframes blink {
+    0%, 95%, 100% { height: 8px; }
+    97% { height: 1px; }
+}
+.speech-bubble {
+    position: absolute;
+    background: var(--aws-white);
+    border-radius: 15px;
+    padding: 10px 15px;
+    top: -50px;
+    left: 70px;
+    font-size: 14px;
+    color: var(--aws-dark-blue);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    opacity: 1;
+    white-space: nowrap;
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: var(--aws-white);
+    border-left: 0;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+
+
+@keyframes fade-in {
+    to { opacity: 1; }
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+.box-body:hover {
+    animation: wave 0.5s ease-in-out;
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.menu-button {
+    background-color: var(--aws-blue);
+    color: var(--aws-white);
+    border: none;
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.menu-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.menu-button i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.back-button {
+    background-color: var(--aws-orange);
+    color: var(--aws-white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.box-buddy.small {
+    transform: scale(0.7);
+    margin-bottom: -20px;
+}
+
+    

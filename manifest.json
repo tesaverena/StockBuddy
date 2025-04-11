@@ -1,0 +1,16 @@
+{
+    "name": "StockBuddy",
+    "short_name": "StockBuddy",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#232F3E",
+    "theme_color": "#FF9900",
+    "orientation": "landscape",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
