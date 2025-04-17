@@ -1,10 +1,10 @@
-const CACHE_NAME = 'stockmaster-v1';
+const CACHE_NAME = 'stockbuddy-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/app.js',
-  '/manifest.json'
+  './',
+  './index.html',
+  './style.css',
+  './app.js',
+  './manifest.json'
 ];
 
 self.addEventListener('install', function(event) {
